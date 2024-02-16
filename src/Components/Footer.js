@@ -1,5 +1,5 @@
 import React from "react";
-import { logo } from "../images/logo.png";
+import logo from "../images/logo.png";
 import FooterColumn from "./FooterColumn";
 
 const Footer = () => {
@@ -25,11 +25,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer>
-      <img src={logo} alt="Little Lemon logo." />
+    <footer className="footer">
+      <section className="footer-column">
+        <img class="logo" src={logo} alt="Little Lemon logo." />
+      </section>
+
       <FooterColumn title="Doormat Navigation" links={doormatNavLinks} />
       <FooterColumn title="Contact" links={contactLinks} />
-      <FooterColumn title="Social Media link" links={socialLinks} />
+      <FooterColumn title="Social Media links" links={socialLinks} />
     </footer>
   );
 };
