@@ -99,6 +99,10 @@ section h2 {
   color: var(--primary-two);
 }
 
+.hero h2 {
+  color: var(--secondary-three);
+}
+
 .hero p {
   color: var(--secondary-three);
 }
@@ -127,6 +131,50 @@ section h2 {
   position: absolute;
   right: 1%;
   border-radius: 20px;
+}
+
+#information {
+  display: flex;
+  justify-content: space-between;
+  min-height: 70vh;
+  max-height: 100vh;
+}
+
+.information-title-container {
+  margin-top: 10rem;
+}
+
+.information-title-container h2 {
+  color: #333333;
+}
+
+.information-image-container p {
+  font-size: 16px;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+}
+
+.information-image-container {
+  position: relative;
+  margin-top: 5rem;
+  min-width: 40vw;
+}
+
+.information-image-container img {
+  height: 65%;
+  position: absolute;
+  border-radius: 20px;
+}
+
+.information-image-container img:first-of-type {
+  top: -5%;
+  right: 150px;
+  z-index: 1;
+}
+
+.information-image-container img:last-of-type {
+  top: 20%;
+  right: -100px;
 }
 
 .input-grid-2 {
@@ -314,6 +362,28 @@ fieldset {
 }
 
 @media screen and (max-width: 1000px) {
+  #information {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .information-image-container {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .information-image-container img {
+    width: 20vw;
+    height: unset;
+    position: relative;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
   .input-group > input,
   .input-group-2,
   .input-group select,
@@ -364,6 +434,7 @@ fieldset {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding-bottom: 1rem;
   }
 
   .container {
@@ -474,4 +545,124 @@ fieldset {
 #menu-toggle:checked + .menu-bar-container .menu-bar::before {
   margin: 0;
   transform: rotate(-45deg);
+}
+
+section#specials,
+section#testimonials,
+section#information {
+  height: 100vh;
+}
+
+section#specials > header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+section#specials > header > .button {
+  margin: 0;
+}
+
+section#testimonials {
+  background-color: var(--primary-one);
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.specials-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.specials-card-image {
+  text-align: center;
+}
+
+.specials-card-image img {
+  width: 25vw;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.specials-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specials-card-header h3 {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: "Markazi Text", serif;
+}
+
+.specials-card-header p {
+  color: #ee9972;
+  font-size: 16px;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+}
+
+.specials-card-header,
+.specials-card-image,
+.specials-card-body,
+.specials-card-footer {
+  width: 100%;
+}
+
+.specials-card-header,
+.specials-card-body,
+.specials-card-footer {
+  padding: 1rem;
+  background: var(--secondary-three);
+}
+
+section#testimonials h2 {
+  color: var(--secondary-three);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+#testimonials .card-container {
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: clamp(140px, 25vw, 200px);
+}
+
+.testimonial-card-header {
+  color: gold;
+}
+
+.testimonial-card-person {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-card-person img {
+  max-width: clamp(40px, 10vw, 100px);
+}
+
+.testimonial-card-person p {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Karla", sans-serif;
+}
+
+.testimonial-card-footer p {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }

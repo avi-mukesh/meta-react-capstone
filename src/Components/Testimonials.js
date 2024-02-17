@@ -4,10 +4,13 @@ import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
   return (
-    <section>
-      {testimonials.map((test) => (
-        <TestimonialCard testimonial={test} />
-      ))}
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <div className="card-container">
+        {testimonials.map((test) => (
+          <TestimonialCard testimonial={test} />
+        ))}
+      </div>
     </section>
   );
 };

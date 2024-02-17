@@ -13,6 +13,7 @@ const HomePage = () => {
         title="Little Lemon"
         subtitle="Little Lemon is the best restaurant in Chicago. You can find so many lemons and crap hehe."
         image={restaurantfood}
+        mainsubtitle="Chicago"
       >
         <Link to="/reservations" className="button">
           Make Reservation

@@ -1,10 +1,11 @@
 import React from "react";
 
-export const Hero = ({ title, subtitle, image, children }) => {
+export const Hero = ({ title, subtitle, image, children, mainsubtitle }) => {
   return (
     <section className="hero">
       <div className="hero-title-container">
         <h1>{title}</h1>
+        {mainsubtitle && <h2>{mainsubtitle}</h2>}
         <p>{subtitle}</p>
         {children}
       </div>
