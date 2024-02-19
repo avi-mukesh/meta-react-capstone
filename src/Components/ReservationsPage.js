@@ -5,6 +5,7 @@ import TableDetailsFormSection from "./TableDetailsFormSection";
 import PersonalDetailsFormSection from "./PersonalDetailsFormSection";
 import AddressDetailsForm from "./AddressDetailsForm";
 import PaymentDetailsFormSection from "./PaymentDetailsFormSection";
+import { submitAPI } from "../utils/mockApi";
 
 const ReservationsPage = ({ availableTimes, dispatch }) => {
   const [bookingInfo, setBookingInfo] = useState({
@@ -41,7 +42,12 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
   });
 
   const makeReservation = () => {
-    console.log("making reservation...");
+    submitAPI({
+      ...bookingInfo,
+      ...personInfo,
+      ...addressInfo,
+      ...paymentInfo,
+    });
   };
 
   return (

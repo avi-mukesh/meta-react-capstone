@@ -3,20 +3,11 @@ import "./App.css";
 import Layout from "./Components/Layout";
 import HomePage from "./Components/HomePage";
 import ReservationsPage from "./Components/ReservationsPage";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import { fetchAPI } from "./utils/mockApi";
 
 export const initializeTimes = () => {
-  return [
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
-    "19:00",
-    "19:30",
-    "20:00",
-    "20:30",
-    "21:00",
-  ];
+  return fetchAPI(new Date());
 };
 
 function App() {
@@ -47,7 +38,12 @@ function App() {
     }
   };
 
-  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const [availableTimes, dispatch] = useReducer(updateTimes, []);
+
+  useEffect(() => {
+    dispatch({ type: "date_change", date: new Date() });
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
