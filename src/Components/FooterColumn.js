@@ -6,7 +6,9 @@ const FooterColumn = ({ title, links }) => {
       <h2>{title}</h2>
       <div className="footer-links">
         {links.map((link) => (
-          <a href={link.path}>{link.title}</a>
+          <a href={link.path} key={link.title}>
+            {link.title}
+          </a>
         ))}
       </div>
     </section>

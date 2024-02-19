@@ -12,7 +12,7 @@ const Specials = () => {
 
       <div className="card-container">
         {specials.map((sp) => (
-          <SpecialsCard special={sp} />
+          <SpecialsCard special={sp} key={sp.name} />
         ))}
       </div>
     </section>

@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBicycle } from "@fortawesome/free-solid-svg-icons";
 
 const SpecialsCard = ({ special }) => {
   return (
@@ -14,7 +16,12 @@ const SpecialsCard = ({ special }) => {
         <p>{special.description}</p>
       </div>
       <div className="specials-card-footer">
-        <p>Order a delivery</p>
+        <p>
+          Order a delivery{" "}
+          <span>
+            <FontAwesomeIcon icon={faBicycle} />
+          </span>
+        </p>
       </div>
     </article>
   );

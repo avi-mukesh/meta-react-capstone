@@ -217,7 +217,8 @@ section h2 {
   height: 200px;
 }
 
-input:not([type="text"]):not([type="email"]) {
+input:not([type="text"]):not([type="email"]),
+select {
   text-align: center;
 }
 
@@ -619,6 +620,12 @@ section#testimonials {
 .specials-card-footer {
   padding: 1rem;
   background: var(--secondary-three);
+}
+
+.specials-card-footer p {
+  font-size: 16px;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
 }
 
 section#testimonials h2 {

@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { Hero } from "./Hero";
 import marioadrian from "../images/mario-adrian.webp";
+import TableDetailsFormSection from "./TableDetailsFormSection";
+import PersonalDetailsFormSection from "./PersonalDetailsFormSection";
+import AddressDetailsForm from "./AddressDetailsForm";
+import PaymentDetailsFormSection from "./PaymentDetailsFormSection";
 
-const ReservationsPage = () => {
+const ReservationsPage = ({ availableTimes, dispatch }) => {
+  const [bookingInfo, setBookingInfo] = useState({
+    date: new Date(),
+    time: "17:30",
+    numPeople: 1,
+    joiningFor: "food-and-drinks",
+    sittingLocation: "outside",
+    occasion: "none",
+    comments: "",
+  });
+
+  const [personInfo, setPersonInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+
+  const [addressInfo, setAddressInfo] = useState({
+    line1: "",
+    line2: "",
+    line3: "",
+    city: "",
+    county: "",
+    country: "france",
+    postcode: "",
+  });
+
+  const [paymentInfo, setPaymentInfo] = useState({
+    cardNum: "",
+    expiryDateMonth: "4",
+    expiryDateYear: "2025",
+    cvc: 0,
+  });
+
+  const makeReservation = () => {
+    console.log("making reservation...");
+  };
+
   return (
     <main id="reservationPage">
       <Hero
@@ -10,163 +51,30 @@ const ReservationsPage = () => {
         subtitle="Simple and easily make a reservation in advance to guarantee a table upon arrival."
         image={marioadrian}
       />
-      <section>
-        <h2>Table Details</h2>
-        <fieldset className="input-grid">
-          <div className="input-group">
-            <label>Choose your date</label>
-            <input type="date" />
-          </div>
-          <div className="input-group">
-            <label>Choose your time</label>
-            <input type="time" />
-          </div>
-          <div className="input-group">
-            <label>Number of people</label>
-            <input type="number" max="8" />
-          </div>
-          <div className="input-group">
-            <label>What will you be joining us for?</label>
-            <div className="radio-container">
-              <div className="radio-item">
-                <input
-                  type="radio"
-                  id="radio-drinks"
-                  name="joining-for"
-                  value="Drinks"
-                />
-                <label for="radio-drinks">Drinks</label>
-              </div>
-              <div className="radio-item">
-                <input
-                  type="radio"
-                  id="radio-foodanddrinks"
-                  name="joining-for"
-                  value="Food and drinks"
-                />
-                <label for="radio-foodanddrinks">Food and drinks</label>
-              </div>
-            </div>
-          </div>
-          <div className="input-group">
-            <label>Where would you like to sit?</label>
-            <div className="radio-container">
-              <div className="radio-item">
-                <input
-                  type="radio"
-                  id="radio-outside"
-                  name="sitting-location"
-                  value="outside"
-                />
-                <label for="radio-drinks">Outside</label>
-              </div>
-              <div className="radio-item">
-                <input
-                  type="radio"
-                  id="radio-indoors"
-                  name="sitting-location"
-                  value="indoors"
-                />
-                <label for="radio-foodanddrinks">Indoors</label>
-              </div>
-            </div>
-          </div>
-          <div className="input-group">
-            <label>What's the occasion?</label>
-            <select>
-              <option>None</option>
-              <option>Birthday</option>
-              <option>Engagement</option>
-              <option>Anniversary</option>
-            </select>
-          </div>
-          <div className="input-group">
-            <label>Any additional comments?</label>
-            <textarea />
-          </div>
-        </fieldset>
-      </section>
-      <section>
-        <h2>Your details</h2>
-        <fieldset className="input-grid-2">
-          <label>Contact Details</label>
-          <div className="input-group-container">
-            <div className="input-group-2">
-              <label for="first-name">First name</label>
-              <input type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="last-name">Last name</label>
-              <input type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="email">Email address</label>
-              <input type="email" />
-            </div>
-          </div>
-        </fieldset>
-      </section>
-      <section>
-        <fieldset className="input-grid-2">
-          <label>Addres Details</label>
-          <div className="input-group-container">
-            <div className="input-group-2">
-              <label for="address-line-one">Line 1</label>
-              <input id="address-line-one" type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="address-line-two">Line 2</label>
-              <input id="address-line-two" type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="address-line-three">Line 3</label>
-              <input id="address-line-three" type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="address-city">City</label>
-              <input id="address-city" type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="address-county">County</label>
-              <input id="address-county" type="text" />
-            </div>
-            <div className="input-group-2">
-              <label for="address-country">Country</label>
-              <select id="address-country">
-                <option>United Kingdom</option>
-                <option>India</option>
-                <option>France</option>
-              </select>
-            </div>
-            <div className="input-group-2">
-              <label for="address-postcode">Postcode</label>
-              <input id="address-postcode" type="text" />
-            </div>
-          </div>
-        </fieldset>
-      </section>
-      <section>
-        <fieldset className="input-grid-2">
-          <label>Addres Details</label>
-          <div className="input-group-container">
-            <div className="input-group-2 card-number-input-group">
-              <label for="payment-card-number">16 digit card number</label>
-              <input id="payment-card-number" type="text" />
-            </div>
-            <div className="input-group-3">
-              <div className="input-group-2">
-                <label for="address-line-two">Expiry Date</label>
-                <input id="address-line-two" type="date" />
-              </div>
-              <div className="input-group-2">
-                <label for="address-line-two">CVC</label>
-                <input id="address-line-two" type="text" />
-              </div>
-            </div>
-          </div>
-        </fieldset>
-      </section>
-      <button className="button">Make Reservation</button>
+
+      <form>
+        <TableDetailsFormSection
+          availableTimes={availableTimes}
+          dispatch={dispatch}
+          bookingInfo={bookingInfo}
+          setBookingInfo={setBookingInfo}
+        />
+        <PersonalDetailsFormSection
+          personInfo={personInfo}
+          setPersonInfo={setPersonInfo}
+        />
+        <AddressDetailsForm
+          addressInfo={addressInfo}
+          setAddressInfo={setAddressInfo}
+        />
+        <PaymentDetailsFormSection
+          paymentInfo={paymentInfo}
+          setPaymentInfo={setPaymentInfo}
+        />
+        <button className="button" type="button" onClick={makeReservation}>
+          Make Reservation
+        </button>
+      </form>
     </main>
   );
 };

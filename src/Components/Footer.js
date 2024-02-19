@@ -8,7 +8,6 @@ const Footer = () => {
     { title: "About", path: "/about" },
     { title: "Menu", path: "/menu" },
     { title: "Reservations", path: "/reservations" },
-    { title: "Reservations", path: "/reservations" },
     { title: "Order Online", path: "/order" },
     { title: "Log In", path: "/login" },
   ];
@@ -27,7 +26,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <section className="footer-column">
-        <img class="logo" src={logo} alt="Little Lemon logo." />
+        <img className="logo" src={logo} alt="Little Lemon logo." />
       </section>
 
       <FooterColumn title="Doormat Navigation" links={doormatNavLinks} />
