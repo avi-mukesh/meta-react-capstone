@@ -1,10 +1,11 @@
 import { getAllByTitle, render, screen } from "@testing-library/react";
-import App from "./App";
+import App, { updateTimes } from "./App";
 import HomePage from "./Components/HomePage";
 import Specials from "./Components/Specials";
 import TableDetailsFormSection from "./Components/TableDetailsFormSection";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { initializeTimes } from "./App";
+import { fetchAPI } from "./utils/mockApi";
 
 test("specials online menu button", () => {
   render(<Specials />);
@@ -23,16 +24,15 @@ test("home page heading", () => {
 });
 
 test("initialize times returns correct times", () => {
-  const timesReturned = initializeTimes();
-  expect(timesReturned).toEqual([
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
-    "19:00",
-    "19:30",
-    "20:00",
-    "20:30",
-    "21:00",
-  ]);
+  const initialState = initializeTimes();
+  const expectedResult = fetchAPI(new Date());
+
+  expect(initialState).toEqual(expectedResult);
+});
+
+test("update times returns the same state", () => {
+  const times = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const action = { type: "non_existent" };
+  const newTimes = updateTimes(times, action);
+  expect(newTimes).toEqual(times);
 });

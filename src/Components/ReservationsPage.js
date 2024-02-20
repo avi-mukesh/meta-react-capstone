@@ -6,8 +6,11 @@ import PersonalDetailsFormSection from "./PersonalDetailsFormSection";
 import AddressDetailsForm from "./AddressDetailsForm";
 import PaymentDetailsFormSection from "./PaymentDetailsFormSection";
 import { submitAPI } from "../utils/mockApi";
+import { useNavigate } from "react-router-dom";
 
 const ReservationsPage = ({ availableTimes, dispatch }) => {
+  const navigate = useNavigate();
+
   const [bookingInfo, setBookingInfo] = useState({
     date: new Date(),
     time: "17:30",
@@ -42,12 +45,16 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
   });
 
   const makeReservation = () => {
-    submitAPI({
-      ...bookingInfo,
-      ...personInfo,
-      ...addressInfo,
-      ...paymentInfo,
-    });
+    if (
+      submitAPI({
+        ...bookingInfo,
+        ...personInfo,
+        ...addressInfo,
+        ...paymentInfo,
+      })
+    ) {
+      navigate("/confirm_reservation");
+    }
   };
 
   return (
