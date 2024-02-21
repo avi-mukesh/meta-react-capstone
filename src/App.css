@@ -673,3 +673,7 @@ section#testimonials h2 {
   font-size: 16px;
   font-weight: 400;
 }
+
+span.field-validation-error {
+  color: rgb(230, 60, 60);
+}
