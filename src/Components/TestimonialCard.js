@@ -5,7 +5,7 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 const TestimonialCard = ({ testimonial }) => {
   const stars = Array.apply(null, Array(testimonial.rating))
     .map(function () {})
-    .map((_) => <FontAwesomeIcon icon={faStar} />);
+    .map((_, i) => <FontAwesomeIcon icon={faStar} key={i} />);
 
   return (
     <article className="testimonial-card">

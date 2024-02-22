@@ -1,6 +1,13 @@
+import { Field } from "formik";
 import React from "react";
 
-const PaymentDetailsFormSection = ({ paymentInfo, setPaymentInfo }) => {
+const PaymentDetailsFormSection = ({
+  paymentInfo,
+  setPaymentInfo,
+  setFieldValue,
+  errors,
+  touched,
+}) => {
   return (
     <section>
       <fieldset className="input-grid-2">
@@ -8,29 +15,23 @@ const PaymentDetailsFormSection = ({ paymentInfo, setPaymentInfo }) => {
         <div className="input-group-container">
           <div className="input-group-2 card-number-input-group">
             <label htmlFor="payment-card-number">16 digit card number</label>
-            <input
+            <Field
               id="payment-card-number"
+              name="cardNum"
               type="text"
               value={paymentInfo.cardNum}
-              onChange={(e) =>
-                setPaymentInfo({ ...paymentInfo, cardNum: e.target.value })
-              }
+              onChange={(e) => {
+                setPaymentInfo({ ...paymentInfo, cardNum: e.target.value });
+                setFieldValue("cardNum", e.target.value);
+              }}
             />
+            {errors.cardNum && touched.cardNum && (
+              <span className="field-validation-error">{errors.cardNum}</span>
+            )}
           </div>
           <div className="input-group-3">
             <div className="input-group-2">
               <label htmlFor="payment-expiry-date">Expiry Date</label>
-              {/* <input
-            id="payment-expiry-date"
-            type="date"
-            value={paymentInfo.expiryDate}
-            onChange={(e) =>
-              setPaymentInfo({
-                ...paymentInfo,
-                expiryDate: e.target.value,
-              })
-            }
-          /> */}
               <select
                 value={paymentInfo.expiryDateMonth}
                 onChange={(e) =>
@@ -62,14 +63,19 @@ const PaymentDetailsFormSection = ({ paymentInfo, setPaymentInfo }) => {
             </div>
             <div className="input-group-2">
               <label htmlFor="payment-cvc">CVC</label>
-              <input
+              <Field
                 id="payment-cvc"
+                name="cvc"
                 type="text"
                 value={paymentInfo.cvc}
-                onChange={(e) =>
-                  setPaymentInfo({ ...paymentInfo, cvc: e.target.value })
-                }
+                onChange={(e) => {
+                  setPaymentInfo({ ...paymentInfo, cvc: e.target.value });
+                  setFieldValue("cvc", e.target.value);
+                }}
               />
+              {errors.cvc && touched.cvc && (
+                <span className="field-validation-error">{errors.cvc}</span>
+              )}
             </div>
           </div>
         </div>

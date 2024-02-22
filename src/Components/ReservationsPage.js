@@ -26,12 +26,12 @@ const ReservationSchema = Yup.object().shape({
   city: Yup.string().max(32).required("Required"),
   county: Yup.string().max(32),
   postcode: Yup.string()
-    .matches(/[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}/i)
+    .matches(/[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}/i, "Postcode is invalid")
     .required("Required"),
   cardNum: Yup.string()
-    .matches(/\d{16}/i, "Card number needs to be 16 digits")
+    .matches(/\d{16}/i, "Card number must be 16 digits")
     .required("Required"),
-  cvc: Yup.number().min(100).max(999).required("Required"),
+  cvc: Yup.string().matches(/\d{3}/i, "CVC must be 3 digits"),
 });
 
 const ReservationsPage = ({ availableTimes, dispatch }) => {
@@ -99,9 +99,32 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
       >
         {({ errors, touched, setFieldValue }) => (
           <>
+            <TableDetailsFormSection
+              availableTimes={availableTimes}
+              dispatch={dispatch}
+              bookingInfo={bookingInfo}
+              setBookingInfo={setBookingInfo}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              touched={touched}
+            />
             <PersonalDetailsFormSection
               personInfo={personInfo}
               setPersonInfo={setPersonInfo}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              touched={touched}
+            />
+            <AddressDetailsForm
+              addressInfo={addressInfo}
+              setAddressInfo={setAddressInfo}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              touched={touched}
+            />
+            <PaymentDetailsFormSection
+              paymentInfo={paymentInfo}
+              setPaymentInfo={setPaymentInfo}
               setFieldValue={setFieldValue}
               errors={errors}
               touched={touched}
@@ -114,20 +137,6 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
       </Formik>
 
       {/* <form>
-        <TableDetailsFormSection
-          availableTimes={availableTimes}
-          dispatch={dispatch}
-          bookingInfo={bookingInfo}
-          setBookingInfo={setBookingInfo}
-        />
-        <PersonalDetailsFormSection
-          personInfo={personInfo}
-          setPersonInfo={setPersonInfo}
-        />
-        <AddressDetailsForm
-          addressInfo={addressInfo}
-          setAddressInfo={setAddressInfo}
-        />
         <PaymentDetailsFormSection
           paymentInfo={paymentInfo}
           setPaymentInfo={setPaymentInfo}

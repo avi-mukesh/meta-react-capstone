@@ -186,7 +186,7 @@ section h2 {
 .input-group {
   display: grid;
   grid-template-columns: 2fr 3fr;
-  gap: 5rem;
+  gap: 0 5rem;
   margin: 1rem 0;
 }
 
@@ -676,4 +676,5 @@ section#testimonials h2 {
 
 span.field-validation-error {
   color: rgb(230, 60, 60);
+  grid-column: 2;
 }

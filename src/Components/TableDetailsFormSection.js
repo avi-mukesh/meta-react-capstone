@@ -1,3 +1,4 @@
+import { Field, Formik } from "formik";
 import React from "react";
 
 const TableDetailsFormSection = ({
@@ -5,47 +6,67 @@ const TableDetailsFormSection = ({
   dispatch,
   bookingInfo,
   setBookingInfo,
+  setFieldValue,
+  errors,
+  touched,
 }) => {
   return (
     <section>
       <h2>Table Details</h2>
       <fieldset className="input-grid">
         <div className="input-group">
-          <label>Choose your date</label>
-          <input
+          <label htmlFor="bookingDate">Choose your date</label>
+
+          <Field
+            id="bookingDate"
+            name="date"
             type="date"
             value={bookingInfo.date}
             onChange={(e) => {
               setBookingInfo({ ...bookingInfo, date: e.target.value });
+              setFieldValue("date", e.target.value);
               dispatch({ type: "date_change", date: e.target.value });
             }}
           />
+          {errors.date && touched.date && (
+            <span className="field-validation-error">{errors.date}</span>
+          )}
         </div>
         <div className="input-group">
-          <label>Choose your time</label>
-          <select
-            value={bookingInfo.time}
-            onChange={(e) =>
-              setBookingInfo({ ...bookingInfo, time: e.target.value })
-            }
+          <label htmlFor="bookingTime">Choose your time</label>
+          <Field
+            id="bookingTime"
+            as="select"
+            name="time"
+            onChange={(e) => {
+              setBookingInfo({ ...bookingInfo, time: e.target.value });
+              setFieldValue("time", e.target.value);
+            }}
           >
             {availableTimes.map((time) => (
               <option value={time} key={time}>
                 {time}
               </option>
             ))}
-          </select>
+          </Field>
         </div>
         <div className="input-group">
-          <label>Number of people</label>
-          <input
+          <label htmlFor="numPeople">Number of people</label>
+          <Field
+            id="numPeople"
             type="number"
+            name="numPeople"
+            min="1"
             max="8"
             value={bookingInfo.numPeople}
-            onChange={(e) =>
-              setBookingInfo({ ...bookingInfo, numPeople: e.target.value })
-            }
+            onChange={(e) => {
+              setBookingInfo({ ...bookingInfo, numPeople: e.target.value });
+              setFieldValue("numPeople", e.target.value);
+            }}
           />
+          {errors.numPeople && touched.numPeople && (
+            <span className="field-validation-error">{errors.numPeople}</span>
+          )}
         </div>
         <div className="input-group">
           <label>What will you be joining us for?</label>
@@ -122,27 +143,38 @@ const TableDetailsFormSection = ({
           </div>
         </div>
         <div className="input-group">
-          <label>What's the occasion?</label>
-          <select
-            value={bookingInfo.occasion}
-            onChange={(e) =>
-              setBookingInfo({ ...bookingInfo, occasion: e.target.value })
-            }
+          <label htmlFor="occasion">What's the occasion?</label>
+          <Field
+            id="occasion"
+            name="occasion"
+            as="select"
+            onChange={(e) => {
+              setBookingInfo({ ...bookingInfo, occasion: e.target.value });
+              setFieldValue("occasion", e.target.value);
+            }}
           >
             <option value="none">None</option>
             <option value="birthday">Birthday</option>
             <option value="engagement">Engagement</option>
             <option value="anniversary">Anniversary</option>
-          </select>
+          </Field>
         </div>
         <div className="input-group">
-          <label>Any additional comments?</label>
-          <textarea
+          <label htmlFor="comments">Any additional comments?</label>
+
+          <Field
+            id="comments"
+            as="textarea"
+            name="comments"
             value={bookingInfo.comments}
-            onChange={(e) =>
-              setBookingInfo({ ...bookingInfo, comments: e.target.value })
-            }
+            onChange={(e) => {
+              setBookingInfo({ ...bookingInfo, comments: e.target.value });
+              setFieldValue("comments", e.target.value);
+            }}
           />
+          {errors.comments && touched.comments && (
+            <span className="field-validation-error">{errors.comments}</span>
+          )}
         </div>
       </fieldset>
     </section>
