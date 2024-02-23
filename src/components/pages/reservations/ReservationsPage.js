@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Hero } from "./Hero";
-import marioadrian from "../images/mario-adrian.webp";
+import { Hero } from "../../shared/Hero";
+import marioadrian from "../../../images/mario-adrian.webp";
 import TableDetailsFormSection from "./TableDetailsFormSection";
 import PersonalDetailsFormSection from "./PersonalDetailsFormSection";
 import AddressDetailsForm from "./AddressDetailsForm";
 import PaymentDetailsFormSection from "./PaymentDetailsFormSection";
-import { submitAPI } from "../utils/mockApi";
+import { submitAPI } from "../../../utils/mockApi";
 import { useNavigate } from "react-router-dom";
-import { Field, Formik, validateYupSchema } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 const ReservationSchema = Yup.object().shape({
@@ -137,20 +137,11 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
               touched={touched}
             />
             <button
+              aria-label="Submit reservation details button"
               className="button"
               type="submit"
               onClick={() =>
                 validateForm().then(async (errors) => {
-                  const errors2 = await ReservationSchema.validate(
-                    {
-                      ...bookingInfo,
-                      ...personInfo,
-                      ...addressInfo,
-                      ...paymentInfo,
-                    },
-                    { abortEarly: false }
-                  ).catch((e) => console.log(e.toString().includes("11")));
-
                   if (Object.keys(errors).length === 0) {
                     makeReservation();
                   } else {
@@ -167,16 +158,6 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
           </>
         )}
       </Formik>
-
-      {/* <form>
-        <PaymentDetailsFormSection
-          paymentInfo={paymentInfo}
-          setPaymentInfo={setPaymentInfo}
-        />
-        <button className="button" type="button" onClick={makeReservation}>
-          Make Reservation
-        </button>
-      </form> */}
     </main>
   );
 };

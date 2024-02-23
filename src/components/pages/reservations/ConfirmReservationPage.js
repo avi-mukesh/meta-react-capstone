@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero } from "./Hero";
+import { Hero } from "../../shared/Hero";
 import { useNavigate } from "react-router-dom";
 
 const ConfirmReservationPage = () => {

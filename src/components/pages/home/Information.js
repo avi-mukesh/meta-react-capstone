@@ -1,6 +1,6 @@
 import React from "react";
-import image1 from "../images/restaurant.webp";
-import image2 from "../images/mario-adrian2.webp";
+import image1 from "../../../images/restaurant.webp";
+import image2 from "../../../images/mario-adrian2.webp";
 
 const Information = () => {
   return (

@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Layout from "./Components/Layout";
-import HomePage from "./Components/HomePage";
-import ReservationsPage from "./Components/ReservationsPage";
+import Layout from "./components/shared/Layout";
+import HomePage from "./components/pages/home/HomePage";
+import ReservationsPage from "./components/pages/reservations/ReservationsPage";
 import { useEffect, useReducer } from "react";
 import { fetchAPI } from "./utils/mockApi";
-import ConfirmReservationPage from "./Components/ConfirmReservationPage";
+import ConfirmReservationPage from "./components/pages/reservations/ConfirmReservationPage";
+import UnderConstructionPage from "./components/pages/UnderConstructionPage";
 
 export const initializeTimes = () => {
   return fetchAPI(new Date());
@@ -63,6 +64,7 @@ function App() {
           path="confirm_reservation"
           element={<ConfirmReservationPage />}
         />
+        <Route path="under_construction" element={<UnderConstructionPage />} />
       </Route>
     </Routes>
   );

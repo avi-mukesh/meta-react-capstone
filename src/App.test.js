@@ -1,8 +1,8 @@
 import { getAllByTitle, render, screen } from "@testing-library/react";
 import App, { updateTimes } from "./App";
-import HomePage from "./Components/HomePage";
-import Specials from "./Components/Specials";
-import TableDetailsFormSection from "./Components/TableDetailsFormSection";
+import HomePage from "./components/HomePage";
+import Specials from "./components/Specials";
+import TableDetailsFormSection from "./components/TableDetailsFormSection";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { initializeTimes } from "./App";
 import { fetchAPI } from "./utils/mockApi";

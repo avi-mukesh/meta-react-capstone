@@ -1,14 +1,14 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import TableDetailsFormSection from "./Components/TableDetailsFormSection";
+import TableDetailsFormSection from "./components/pages/reservations/TableDetailsFormSection";
 import { Formik } from "formik";
 import userEvent from "@testing-library/user-event";
-import PersonalDetailsFormSection from "./Components/PersonalDetailsFormSection";
+import PersonalDetailsFormSection from "./components/pages/reservations/PersonalDetailsFormSection";
 import { wait } from "@testing-library/user-event/dist/utils";
 import * as Yup from "yup";
-import AddressDetailsForm from "./Components/AddressDetailsForm";
+import AddressDetailsForm from "./components/pages/reservations/AddressDetailsForm";
 import { useState } from "react";
 import { submitAPI } from "./utils/mockApi";
-import PaymentDetailsFormSection from "./Components/PaymentDetailsFormSection";
+import PaymentDetailsFormSection from "./components/pages/reservations/PaymentDetailsFormSection";
 import exp from "constants";
 
 const ReservationSchema = Yup.object().shape({

@@ -9,7 +9,7 @@ const PaymentDetailsFormSection = ({
   touched,
 }) => {
   return (
-    <section>
+    <section aria-label="Payment details section">
       <fieldset className="input-grid-2">
         <label>Payment Details</label>
         <div className="input-group-container">

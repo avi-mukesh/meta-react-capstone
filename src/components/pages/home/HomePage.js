@@ -1,6 +1,6 @@
 import React from "react";
-import { Hero } from "./Hero";
-import restaurantfood from "../images/restaurantfood.webp";
+import { Hero } from "../../shared/Hero";
+import restaurantfood from "../../../images/restaurantfood.webp";
 import { Link } from "react-router-dom";
 import Specials from "./Specials";
 import Testimonials from "./Testimonials";

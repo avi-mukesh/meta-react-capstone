@@ -1,10 +1,10 @@
 import React from "react";
-import testimonials from "../testimonials";
+import testimonials from "../../../testimonials";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
   return (
-    <section id="testimonials">
+    <section aria-label="Customer tesimonials" id="testimonials">
       <h2>Testimonials</h2>
       <div className="card-container">
         {testimonials.map((test) => (

@@ -1,4 +1,4 @@
-import { Field, Formik } from "formik";
+import { Field } from "formik";
 import React from "react";
 
 const TableDetailsFormSection = ({
@@ -11,7 +11,7 @@ const TableDetailsFormSection = ({
   touched,
 }) => {
   return (
-    <section>
+    <section aria-label="Table details section">
       <h2>Table Details</h2>
       <fieldset className="input-grid">
         <div className="input-group">

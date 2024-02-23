@@ -19,20 +19,18 @@ const Nav = () => {
         <ul>
           <li>
             <Link to="/">Home</Link>
-            {/* <a href="home">Home</a> */}
           </li>
           <li>
-            <a href="menu">Menu</a>
+            <Link to="/under_construction">Menu</Link>
           </li>
           <li>
             <Link to="/reservations">Reservations</Link>
-            {/* <a href="reservations">Reservations</a> */}
           </li>
           <li>
-            <a href="/orderonline">Order Online</a>
+            <Link to="/under_construction">Order online</Link>
           </li>
           <li>
-            <a href="/login">Log In</a>
+            <Link to="/under_construction">Login</Link>
           </li>
         </ul>
       </nav>
@@ -43,7 +41,11 @@ const Nav = () => {
           type="checkbox"
           id="menu-toggle"
         />
-        <label htmlFor="menu-toggle" className="menu-bar-container">
+        <label
+          aria-label="Hamurger toggle click"
+          htmlFor="menu-toggle"
+          className="menu-bar-container"
+        >
           <div className="menu-bar"></div>
         </label>
       </div>
