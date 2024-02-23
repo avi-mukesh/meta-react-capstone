@@ -9,13 +9,15 @@ export const Hero = ({ title, subtitle, image, children, mainsubtitle }) => {
         <p>{subtitle}</p>
         {children}
       </div>
-      <div className="hero-image-container">
-        <img
-          aria-label="Hero image"
-          src={image}
-          alt="Mario and Adrian cheffing it up."
-        />
-      </div>
+      {image && (
+        <div className="hero-image-container">
+          <img
+            aria-label="Hero image"
+            src={image}
+            alt="Mario and Adrian cheffing it up."
+          />
+        </div>
+      )}
     </section>
   );
 };
