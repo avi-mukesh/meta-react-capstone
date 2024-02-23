@@ -16,6 +16,7 @@ const AddressDetailsForm = ({
           <div className="input-group-2">
             <label htmlFor="address-line-one">Line 1</label>
             <Field
+              required
               id="address-line-one"
               name="line1"
               type="text"

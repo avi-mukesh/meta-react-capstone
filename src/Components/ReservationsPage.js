@@ -66,7 +66,7 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
     cvc: 0,
   });
 
-  const makeReservation = () => {
+  const makeReservation = async () => {
     if (
       submitAPI({
         ...bookingInfo,
@@ -140,16 +140,24 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
               className="button"
               type="submit"
               onClick={() =>
-                validateForm().then((errors) => {
+                validateForm().then(async (errors) => {
+                  const errors2 = await ReservationSchema.validate(
+                    {
+                      ...bookingInfo,
+                      ...personInfo,
+                      ...addressInfo,
+                      ...paymentInfo,
+                    },
+                    { abortEarly: false }
+                  ).catch((e) => console.log(e.toString().includes("11")));
+
                   if (Object.keys(errors).length === 0) {
                     makeReservation();
                   } else {
                     for (let errKey in errors) {
-                      console.log(errKey, errors[errKey]);
                       setFieldError(errKey, errors[errKey]);
                       setFieldTouched(errKey, true);
                     }
-                    console.log("form errors");
                   }
                 })
               }

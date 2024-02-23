@@ -16,6 +16,7 @@ const PaymentDetailsFormSection = ({
           <div className="input-group-2 card-number-input-group">
             <label htmlFor="payment-card-number">16 digit card number</label>
             <Field
+              required
               id="payment-card-number"
               name="cardNum"
               type="text"
@@ -64,6 +65,7 @@ const PaymentDetailsFormSection = ({
             <div className="input-group-2">
               <label htmlFor="payment-cvc">CVC</label>
               <Field
+                required
                 id="payment-cvc"
                 name="cvc"
                 type="text"

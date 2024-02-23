@@ -18,6 +18,7 @@ const PersonalDetailsFormSection = ({
             <label htmlFor="firstName">First name</label>
 
             <Field
+              required
               id="firstName"
               name="firstName"
               type="text"
@@ -42,6 +43,7 @@ const PersonalDetailsFormSection = ({
           <div className="input-group-2">
             <label htmlFor="lastName">Last name</label>
             <Field
+              required
               id="lastName"
               name="lastName"
               type="text"
@@ -61,6 +63,7 @@ const PersonalDetailsFormSection = ({
           <div className="input-group-2">
             <label htmlFor="email">Email address</label>
             <Field
+              required
               id="email"
               name="email"
               type="email"
