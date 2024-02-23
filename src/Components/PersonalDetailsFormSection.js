@@ -31,7 +31,12 @@ const PersonalDetailsFormSection = ({
               }}
             />
             {errors.firstName && touched.firstName && (
-              <span className="field-validation-error">{errors.firstName}</span>
+              <span
+                data-testid="firstNameError"
+                className="field-validation-error"
+              >
+                {errors.firstName}
+              </span>
             )}
           </div>
           <div className="input-group-2">

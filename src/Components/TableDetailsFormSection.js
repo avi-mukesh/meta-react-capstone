@@ -65,7 +65,12 @@ const TableDetailsFormSection = ({
             }}
           />
           {errors.numPeople && touched.numPeople && (
-            <span className="field-validation-error">{errors.numPeople}</span>
+            <span
+              data-testid="numPeopleValidation"
+              className="field-validation-error"
+            >
+              {errors.numPeople}
+            </span>
           )}
         </div>
         <div className="input-group">

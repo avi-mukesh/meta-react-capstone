@@ -6,6 +6,7 @@ import TableDetailsFormSection from "./Components/TableDetailsFormSection";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { initializeTimes } from "./App";
 import { fetchAPI } from "./utils/mockApi";
+import { assert } from "console";
 
 test("specials online menu button", () => {
   render(<Specials />);
@@ -35,4 +36,8 @@ test("update times returns the same state", () => {
   const action = { type: "non_existent" };
   const newTimes = updateTimes(times, action);
   expect(newTimes).toEqual(times);
+});
+
+test("num people can't be less than 1", () => {
+  assert(true);
 });

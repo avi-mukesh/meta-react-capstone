@@ -7,7 +7,7 @@ import AddressDetailsForm from "./AddressDetailsForm";
 import PaymentDetailsFormSection from "./PaymentDetailsFormSection";
 import { submitAPI } from "../utils/mockApi";
 import { useNavigate } from "react-router-dom";
-import { Field, Formik } from "formik";
+import { Field, Formik, validateYupSchema } from "formik";
 import * as Yup from "yup";
 
 const ReservationSchema = Yup.object().shape({
@@ -37,7 +37,7 @@ const ReservationSchema = Yup.object().shape({
 const ReservationsPage = ({ availableTimes, dispatch }) => {
   const navigate = useNavigate();
   const [bookingInfo, setBookingInfo] = useState({
-    date: new Date(),
+    date: "",
     time: "17:30",
     numPeople: 1,
     joiningFor: "food-and-drinks",
@@ -97,7 +97,14 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
         validationSchema={ReservationSchema}
         onSubmit={makeReservation}
       >
-        {({ errors, touched, setFieldValue }) => (
+        {({
+          errors,
+          touched,
+          setFieldValue,
+          validateForm,
+          setFieldError,
+          setFieldTouched,
+        }) => (
           <>
             <TableDetailsFormSection
               availableTimes={availableTimes}
@@ -129,7 +136,24 @@ const ReservationsPage = ({ availableTimes, dispatch }) => {
               errors={errors}
               touched={touched}
             />
-            <button className="button" type="submit" onClick={makeReservation}>
+            <button
+              className="button"
+              type="submit"
+              onClick={() =>
+                validateForm().then((errors) => {
+                  if (Object.keys(errors).length === 0) {
+                    makeReservation();
+                  } else {
+                    for (let errKey in errors) {
+                      console.log(errKey, errors[errKey]);
+                      setFieldError(errKey, errors[errKey]);
+                      setFieldTouched(errKey, true);
+                    }
+                    console.log("form errors");
+                  }
+                })
+              }
+            >
               Make Reservation
             </button>
           </>
